@@ -1,7 +1,7 @@
 module.exports = function (mongoose) {
   mongoose.set('useFindAndModify', false);
   //Connect to Local Mongo through mongoose.
-  mongoose.connect('mongodb://localhost/listbooks');
+  mongoose.connect('mongodb://localhost/listbooks', { useNewUrlParser: true });
   mongoose.connection.once('open', function(){
   	console.log('connection with Mongo has been successfully established!');
   }).on('error', function(error){

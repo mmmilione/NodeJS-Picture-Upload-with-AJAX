@@ -1,5 +1,6 @@
 module.exports = function(app, fs, Book, path){
 
+  const formidable = require('express-formidable');
 
 //Home Page
   app.get('/', (req, res) =>{
@@ -15,6 +16,14 @@ module.exports = function(app, fs, Book, path){
       res.status(200).send(data);
     }).catch(err=>{
       res.status(500).send(err);
+    })
+  })
+
+  app.post('/upload.html', formidable(), (req, res) =>{
+    Book(req.fields).save().then((data)=>{
+      res.status(200).send(data);
+    }).catch((error)=>{
+      res.status(500).send("Error");
     })
   })
 

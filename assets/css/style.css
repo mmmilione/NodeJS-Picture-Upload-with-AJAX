@@ -1,0 +1,62 @@
+/* label focus color */
+    .input-field input[type=text]:focus + label, .input-field input[type=email]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
+     color: blue !important;
+    }
+
+/* label underline focus color */
+    .input-field input[type=text]:focus, .input-field input[type=email]:focus, .materialize-textarea:focus:not([readonly]) {
+     border-bottom: 1px solid blue !important;
+     box-shadow: 0 1px 0 0 blue !important;
+    }
+
+    .outerBar{
+      margin-left: 5%;
+      margin-rigth: 5%;
+      width: 90%;
+      height: 10px;
+      background-color: grey;
+    }
+
+
+    .container{
+      width: 100%;
+    }
+
+    .marginTop100{
+      margin-top: 100px
+    }
+
+    .SpecialModal {
+    min-height: 100px !important;
+    padding-top: 20px; 
+    overflow-y: hidden !important ;
+  }  /* increase the width, height and prevent vertical scroll! However, i don't recommend this, its better to turn on vertical scrolling. */
+
+    .marginTop20{
+      margin-top: 20px
+    }
+
+    .marginBottom{
+      margin-bottom: 20px
+    }
+
+    .bookPic{
+      margin-top: 20px;
+      width: 80%;
+      height: 300px;
+    }
+
+    @media screen and (min-width:467px) {
+      .bookPic{
+        margin-top: 20px;
+        width: 50%;
+        height: 250px;
+      }
+
+    @media screen and (min-width:993px) {
+      .bookPic{
+        padding-top: 20px;
+        width: 50%;
+        height: 250px;
+      }
+  }

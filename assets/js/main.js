@@ -70,6 +70,38 @@ getBooks = () =>{
 }
 
 submit = () =>{
-      //do something
-      console.log('upload stuff');
+  //create new Http Request and open it
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', '/upload.html', true);
+
+  //Create new FormData Object
+  let formdata = new FormData();
+
+  //Get inputs to be submitted and append the to formdata
+  const title = document.querySelector('#title').value;
+  formdata.append('title', title);
+  const author = document.querySelector('#author').value;
+  formdata.append('author', author);
+
+  /*List for request state changes. When complete (status 200 and state 4)
+  diplay error message if something went wrong. Else diplay success message */
+  xhr.onreadystatechange = function(){
+    if(xhr.status == 500){
+      document.querySelector('#addBookModal').innerHTML = errorMessage;
+      return;
+    }
+    if(xhr.readyState == 4 && xhr.status == 200) {
+      if(xhr.responseText.includes('Error')){
+          console.log(xhr.responseText);
+          document.querySelector('#addBookModal').innerHTML = errorMessage;
+          return;
+      }
+      console.log(JSON.parse(xhr.responseText));
+      document.querySelector('#addBookModal').innerHTML = success;
+    }
+  }
+
+  //send http post request to submit FormData
+  xhr.send(formdata);
+  document.querySelector('#addBookModal').innerHTML = progress;
     }
